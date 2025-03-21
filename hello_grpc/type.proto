@@ -3,10 +3,10 @@ syntax = "proto3";
 option go_package = "/type_grpc";
 
 service TypeService{
-  rpc Say(request) returns(Response){}
+  rpc Say(Request) returns(Response){}
 }
 
-message request{
+message Request{
   double a1 = 1;
   float a2 = 2;
   int32 a3 = 3;
