@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package = "/proto";
+
+message Request{
+  string Name = 1;
+}
+
+message Response{
+  string Text = 1;
+}
+
+message FileResponse{
+  string file_name = 1;
+  bytes content = 2;
+}
+
+
+service ServiceStream{
+  rpc Fun(Request)returns(stream Response){}
+  rpc DownLoadFile(Request)returns(stream FileResponse){}
+}
+
+
+message FileRequest{
+  string file_name = 1;
+  bytes content = 2;
+}
+
+service BothStream{
+  rpc Chat(stream Request)returns(stream Response){}
+}
+
+service ClientStream{
+  rpc UploadFile(stream Request) returns(Response){}
+
+}
+
